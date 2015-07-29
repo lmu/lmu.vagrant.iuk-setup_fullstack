@@ -1,0 +1,4 @@
+[submodule "lmu.ansible.playbooks"]
+    path = lmu.ansible.playbooks
+    url = https://github.com/loechel/lmu.ansible.playbooks.git
+    pushurl = git@github.com:loechel/lmu.ansible.playbooks.git
