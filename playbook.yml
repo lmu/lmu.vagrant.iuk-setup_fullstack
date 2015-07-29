@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  sudo: true
+  gather_facts: true
+
+#  - include: lmu.ansible.playbooks/zuv-preseed.yml
+  - include: lmu.ansible.playbooks/base.yml
+  - include: lmu.ansible.playbooks/maintenance.yml
+  - include: lmu.ansible.playbooks/base.yml
+  - include: lmu.ansible.playbooks/base.yml
