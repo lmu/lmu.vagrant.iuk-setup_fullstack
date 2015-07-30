@@ -28,40 +28,40 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     appdb2.vm.network :private_network, ip: "192.168.1.12"
   end
 
-  config.vm.define "app1" do |app1|
-    app1.vm.provider "virtualbox" do |vb|
-      vb.name = "APP1"
+  config.vm.define "app3" do |app3|
+    app3.vm.provider "virtualbox" do |vb|
+      vb.name = "APP3"
       vb.memory = 4096
       vb.cpus = 4
     end
-    app1.vm.network :private_network, ip: "192.168.1.15"
+    app3.vm.network :private_network, ip: "192.168.1.15"
   end
 
-  config.vm.define "app2" do |app2|
-    app2.vm.provider "virtualbox" do |vb|
-      vb.name = "APP2"
+  config.vm.define "app4" do |app4|
+    app4.vm.provider "virtualbox" do |vb|
+      vb.name = "APP4"
       vb.memory = 4096
       vb.cpus = 4
     end
-    app2.vm.network :private_network, ip: "192.168.1.16"
+    app4.vm.network :private_network, ip: "192.168.1.16"
   end
 
-  config.vm.define "search1" do |search1|
-    search1.vm.provider "virtualbox" do |vb|
-      vb.name = "Search1"
+  config.vm.define "search3" do |search3|
+    search3.vm.provider "virtualbox" do |vb|
+      vb.name = "Search3"
       vb.memory = 4096
       vb.cpus = 4
     end
-    search1.vm.network :private_network, ip: "192.168.1.21"
+    search3.vm.network :private_network, ip: "192.168.1.21"
   end
 
-  config.vm.define "search2" do |search2|
-    search2.vm.provider "virtualbox" do |vb|
-      vb.name = "Search2"
+  config.vm.define "search4" do |search4|
+    search4.vm.provider "virtualbox" do |vb|
+      vb.name = "Search4"
       vb.memory = 4096
       vb.cpus = 4
     end
-    search2.vm.network :private_network, ip: "192.168.1.22"
+    search4.vm.network :private_network, ip: "192.168.1.22"
   end
 
   config.vm.define "webproxy1" do |webproxy1|
@@ -94,11 +94,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision "ansible" do |ansible|
       ansible.groups = {
         "appdbs" => ["appdb1", "appdb2"],
-        "apps" => ["app1", "app2"],
-        "searchs" => ["search1", "search2"],
+        "apps" => ["app3", "app4"],
+        "searchs" => ["search3", "search4"],
         "webproxies" => ["webproxy1", "webproxy2"],
-        "serverraum-ludwig27" => ["appdb1", "app1", "search1", "webproxy1", "special"],
-        "serverraum-martius4" => ["appdb2", "app2", "search2", "webproxy2"]
+        "serverraum-ludwig27" => ["appdb1", "app3", "search3", "webproxy1", "special"],
+        "serverraum-martius4" => ["appdb2", "app4", "search4", "webproxy2"]
       }
       ansible.verbose = ""
       ansible.limit = "all"
