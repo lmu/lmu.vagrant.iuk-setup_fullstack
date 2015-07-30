@@ -9,7 +9,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "canonical/trusty64"
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
-  config.vm.box_check_update = true
 
   config.vm.define "appdb1" do |appdb1|
     appdb1.vm.provider "virtualbox" do |vb|
@@ -29,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     appdb2.vm.network :private_network, ip: "192.168.1.12"
   end
 
-    config.vm.define "app1" do |app1|
+  config.vm.define "app1" do |app1|
     app1.vm.provider "virtualbox" do |vb|
       vb.name = "APP1"
       vb.memory = 4096
@@ -103,7 +102,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       }
       ansible.verbose = ""
       ansible.limit = "all"
-      ansible.playbook = "playbook.yml"
+      ansible.playbook = "lmu.ansible.playbooks/base-preseed.yml"
     end
   end
 
