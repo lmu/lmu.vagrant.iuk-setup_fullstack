@@ -19,11 +19,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     appdb1.vm.network :private_network, ip: "192.168.1.11"
   end
 
-  config.vm.define "appdb2" do |appdb2|
+  config.vm.define "appdb2", autostart: false do |appdb2|
     appdb2.vm.provider "virtualbox" do |vb|
       vb.name = "APPDB2"
       vb.memory = 4096
       vb.cpus = 4
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     appdb2.vm.network :private_network, ip: "192.168.1.12"
   end
@@ -37,11 +38,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     app3.vm.network :private_network, ip: "192.168.1.15"
   end
 
-  config.vm.define "app4" do |app4|
+  config.vm.define "app4", autostart: false do |app4|
     app4.vm.provider "virtualbox" do |vb|
       vb.name = "APP4"
       vb.memory = 4096
       vb.cpus = 4
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     app4.vm.network :private_network, ip: "192.168.1.16"
   end
@@ -55,11 +57,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     search3.vm.network :private_network, ip: "192.168.1.21"
   end
 
-  config.vm.define "search4" do |search4|
+  config.vm.define "search4", autostart: false do |search4|
     search4.vm.provider "virtualbox" do |vb|
       vb.name = "Search4"
       vb.memory = 4096
       vb.cpus = 4
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     search4.vm.network :private_network, ip: "192.168.1.22"
   end
@@ -73,13 +76,34 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     webproxy1.vm.network :private_network, ip: "192.168.1.31"
   end
 
-  config.vm.define "webproxy2" do |webproxy2|
+  config.vm.define "webproxy2", autostart: false do |webproxy2|
     webproxy2.vm.provider "virtualbox" do |vb|
       vb.name = "WebProxy2"
       vb.memory = 4096
       vb.cpus = 4
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     webproxy2.vm.network :private_network, ip: "192.168.1.32"
+  end
+
+  config.vm.define "sentry" do |sentry|
+    sentry.vm.provider "virtualbox" do |vb|
+      vb.name = "Sentry1"
+      vb.memory = 4096
+      vb.cpus = 4
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+    end
+    sentry.vm.network :private_network, ip: "192.168.1.90"
+  end
+
+  config.vm.define "piwik" do |piwik|
+    piwik.vm.provider "virtualbox" do |vb|
+      vb.name = "Piwik"
+      vb.memory = 4096
+      vb.cpus = 4
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+    end
+    piwik.vm.network :private_network, ip: "192.168.1.49"
   end
 
   config.vm.define "special" do |special|
@@ -87,6 +111,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.name = "Special"
       vb.memory = 4096
       vb.cpus = 4
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
     special.vm.network :private_network, ip: "192.168.1.5"
 
@@ -97,12 +122,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         "apps" => ["app3", "app4"],
         "searchs" => ["search3", "search4"],
         "webproxies" => ["webproxy1", "webproxy2"],
-        "serverraum-ludwig27" => ["appdb1", "app3", "search3", "webproxy1", "special"],
+        "sentrys" => ["sentry"],
+        "piwik-dbs" => ["piwik"],
+        "piwik-masters" => ["piwik"],
+        "piwik-workers" => ["piwik"],
+        "serverraum-ludwig27" => ["appdb1", "app3", "search3", "webproxy1", "special", "piwik"],
         "serverraum-martius4" => ["appdb2", "app4", "search4", "webproxy2"]
       }
       ansible.verbose = ""
       ansible.limit = "all"
-      ansible.playbook = "lmu.ansible.playbooks/base-preseed.yml"
+      #ansible.playbook = "lmu.ansible.playbooks/base-preseed.yml"
+      ansible.playbook = "lmu.ansible.playbooks/iuk_fullstack.yml"
+      ansible.ask_vault_pass = true
     end
   end
 
