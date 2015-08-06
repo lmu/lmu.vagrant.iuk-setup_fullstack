@@ -3,20 +3,27 @@
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
-#USE_PUBLIC_NETWORK = false
-USE_PUBLIC_NETWORK = true
+
+# Special Settings for this Vagrant Environment
+USE_PUBLIC_NETWORK = false
+#USE_PUBLIC_NETWORK = true
 PRIVATE_NETWORK_BASE = "192.168.1"
 #PRIVATE_NETWORK_BASE = PRIVATE_NETWORK_BASE + ""
 PUBLIC_NETWORK_BASE = "137.193.211"
 #PUBLIC_NETWORK_BASE = "192.168.2"
+AUTOSTART_SECONDARY = false
+#AUTOSTART_SECONDARY = true
+AUTOSTART_INFRASTRUKTURE = false
+#AUTOSTART_INFRASTRUKTURE = true
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "canonical/trusty64"
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
-  config.vm.synced_folder ".", "/vagrant", disabled: true 
+
   # Disbale default synced_folder as ther is no need for this.
+  config.vm.synced_folder ".", "/vagrant", disabled: true 
 
   config.vm.define "appdb1.verwaltung.uni-muenchen.de" do |appdb1|
     appdb1.vm.provider "virtualbox" do |vb|
@@ -28,13 +35,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/Plone"
                    ]
     end
-    appdb1.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".11"
+    appdb1.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".210"
     if USE_PUBLIC_NETWORK
-      appdb1.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".203"
+      appdb1.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".210"
     end
   end
 
-  config.vm.define "appdb2.verwaltung.uni-muenchen.de", autostart: false do |appdb2|
+  config.vm.define "appdb2.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |appdb2|
     appdb2.vm.provider "virtualbox" do |vb|
       vb.name = "APPDB2"
       vb.memory = 4096
@@ -44,9 +51,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/Plone"
                    ]
     end
-    appdb2.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".12"
+    appdb2.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".211"
     if USE_PUBLIC_NETWORK
-      appdb2.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".204"
+      appdb2.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".211"
     end
   end
 
@@ -60,13 +67,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/Plone"
                    ]
     end
-    app3.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".15"
+    app3.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".215"
     if USE_PUBLIC_NETWORK
-      app3.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".205"
+      app3.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".215"
     end
   end
 
-  config.vm.define "app4.verwaltung.uni-muenchen.de", autostart: false do |app4|
+  config.vm.define "app4.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |app4|
     app4.vm.provider "virtualbox" do |vb|
       vb.name = "APP4"
       vb.memory = 4096
@@ -76,9 +83,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/Plone"
                    ]
     end
-    app4.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".16"
+    app4.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".216"
     if USE_PUBLIC_NETWORK
-      app4.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".206"
+      app4.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".216"
     end
   end
 
@@ -92,13 +99,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/Solr"
                    ]
     end
-    search3.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".21"
+    search3.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".208"
     if USE_PUBLIC_NETWORK
       search3.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".208"
     end
   end
 
-  config.vm.define "search4.verwaltung.uni-muenchen.de", autostart: false do |search4|
+  config.vm.define "search4.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |search4|
     search4.vm.provider "virtualbox" do |vb|
       vb.name = "Search4"
       vb.memory = 4096
@@ -108,7 +115,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/Solr"
                    ]
     end
-    search4.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".22"
+    search4.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".209"
     if USE_PUBLIC_NETWORK
       search4.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".209"
     end
@@ -124,13 +131,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/WebProxies"
                    ]
     end
-    webproxy1.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".31"
+    webproxy1.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".205"
     if USE_PUBLIC_NETWORK
-      webproxy1.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".201"
+      webproxy1.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".205"
     end
   end
 
-  config.vm.define "webproxy2.verwaltung.uni-muenchen.de", autostart: false do |webproxy2|
+  config.vm.define "webproxy2.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |webproxy2|
     webproxy2.vm.provider "virtualbox" do |vb|
       vb.name = "WebProxy2"
       vb.memory = 4096
@@ -140,13 +147,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/WebProxies"
                    ]
     end
-    webproxy2.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".32"
+    webproxy2.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".206"
     if USE_PUBLIC_NETWORK
-      webproxy2.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".202"
+      webproxy2.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".206"
     end
   end
 
-  config.vm.define "sentry1.verwaltung.uni-muenchen.de" do |sentry|
+  config.vm.define "sentry1.verwaltung.uni-muenchen.de", autostart: AUTOSTART_INFRASTRUKTURE do |sentry|
     sentry.vm.provider "virtualbox" do |vb|
       vb.name = "Sentry1"
       vb.memory = 4096
@@ -156,13 +163,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/Sentry"
                    ]
     end
-    sentry.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".90"
+    sentry.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".190"
     if USE_PUBLIC_NETWORK
-      sentry.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".218"
+      sentry.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".190"
     end
   end
 
-  config.vm.define "piwik1.verwaltung.uni-muenchen.de" do |node|
+  config.vm.define "piwik1.verwaltung.uni-muenchen.de", autostart: AUTOSTART_INFRASTRUKTURE do |node|
     node.vm.provider "virtualbox" do |vb|
       vb.name = "Piwik1"
       vb.memory = 4096
@@ -172,13 +179,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU/Piwik"
                    ]
     end
-    node.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".49"
+    node.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".195"
     if USE_PUBLIC_NETWORK
-      node.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".219"
+      node.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".195"
     end
   end
 
-  config.vm.define "special.verwaltung.uni-muenchen.de" do |node|
+  config.vm.define "special.verwaltung.uni-muenchen.de", autostart: AUTOSTART_INFRASTRUKTURE do |node|
     node.vm.provider "virtualbox" do |vb|
       vb.name = "Special"
       vb.memory = 4096
@@ -188,7 +195,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "--groups", "/Vagrant/LMU"
                    ]
     end
-    node.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".5"
+    node.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".200"
     if USE_PUBLIC_NETWORK
       node.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".200"
     end
@@ -213,11 +220,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           "DMZ-Analytics" => ["piwik"],
           "DMZ-Infrastruktur" => ["infrastruktur"],
         }
-        ansible.verbose = "vvvv"
+        #ansible.verbose = "vvvv"
+        ansible.verbose = ""
         ansible.limit = "all"
         #ansible.playbook = "lmu.ansible.playbooks/base-preseed.yml"
         ansible.playbook = "lmu.ansible.playbooks/iuk_fullstack.yml"
-        ansible.ask_vault_pass = true
+        #ansible.ask_vault_pass = true
       end
     end
   end
