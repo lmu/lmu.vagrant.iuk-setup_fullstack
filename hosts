@@ -1,0 +1,46 @@
+# Info Helper for IPs of inventory servers as the might not be found via dns
+
+# Vagrant Environment
+
+192.168.1.210    cms-live-appdb1 cms-live-appdb1.verwaltung.uni-muenchen.de
+192.168.1.211    cms-live-appdb2 cms-live-appdb2.verwaltung.uni-muenchen.de
+192.168.1.215    cms-live-app3 cms-live-app3.verwaltung.uni-muenchen.de
+192.168.1.216    cms-live-app4 cms-live-app4.verwaltung.uni-muenchen.de
+192.168.1.208    search3 search3.verwaltung.uni-muenchen.de
+192.168.1.209    search4 search4.verwaltung.uni-muenchen.de
+192.168.1.205    webproxy1 webproxy1.verwaltung.uni-muenchen.de
+192.168.1.206    webproxy2 webproxy2.verwaltung.uni-muenchen.de
+192.168.1.190    sentry sentry.verwaltung.uni-muenchen.de sentry1 sentry1.verwaltung.uni-muenchen.de
+192.168.1.195    piwik piwik.verwaltung.uni-muenchen.de piwik1 piwik1.verwaltung.uni-muenchen.de
+192.168.1.200    special special.verwaltung.uni-muenchen.de
+
+192.168.1.200    www.intranet.verwaltung.uni-muenchen.de www.serviceportal.verwaltung.uni-muenchen.de
+
+
+# Vagrant-Public-IPs Environment
+
+137.193.211.210  cms-live-appdb1 cms-live-appdb1.verwaltung.uni-muenchen.de
+137.193.211.211  cms-live-appdb2 cms-live-appdb2.verwaltung.uni-muenchen.de
+137.193.211.215  cms-live-app3 cms-live-app3.verwaltung.uni-muenchen.de
+137.193.211.216  cms-live-app4 cms-live-app4.verwaltung.uni-muenchen.de
+137.193.211.208  search3 search3.verwaltung.uni-muenchen.de
+137.193.211.209  search4 search4.verwaltung.uni-muenchen.de
+137.193.211.205  webproxy1 webproxy1.verwaltung.uni-muenchen.de
+137.193.211.206  webproxy2 webproxy2.verwaltung.uni-muenchen.de
+137.193.211.190  sentry sentry.verwaltung.uni-muenchen.de sentry1 sentry1.verwaltung.uni-muenchen.de
+137.193.211.195  piwik piwik.verwaltung.uni-muenchen.de piwik1 piwik1.verwaltung.uni-muenchen.de
+137.193.211.200  special special.verwaltung.uni-muenchen.de
+
+137.193.211.200  www.intranet.verwaltung.uni-muenchen.de www.serviceportal.verwaltung.uni-muenchen.de
+
+# Production Environment
+
+10.153.101.230   cms-live-appdb1 cms-live-appdb1.verwaltung.uni-muenchen.de
+10.153.101.231   cms-live-appdb2 cms-live-appdb2.verwaltung.uni-muenchen.de
+10.153.101.234   cms-live-app3 cms-live-app3.verwaltung.uni-muenchen.de
+10.153.101.235   cms-live-app4 cms-live-app4.verwaltung.uni-muenchen.de
+10.153.101.232   search3 search3.verwaltung.uni-muenchen.de
+10.153.101.233   search4 search4.verwaltung.uni-muenchen.de
+10.1110.33.1     webproxy1 webproxy1.verwaltung.uni-muenchen.de
+10.1110.33.2     webproxy2 webproxy2.verwaltung.uni-muenchen.de
+141.84.149.16    sentry sentry.verwaltung.uni-muenchen.de sentry1 sentry1.verwaltung.uni-muenchen.de

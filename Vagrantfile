@@ -25,14 +25,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Disbale default synced_folder as ther is no need for this.
   config.vm.synced_folder ".", "/vagrant", disabled: true 
 
-  config.vm.define "appdb1.verwaltung.uni-muenchen.de" do |appdb1|
+  config.vm.define "cms-live-appdb1.verwaltung.uni-muenchen.de" do |appdb1|
     appdb1.vm.provider "virtualbox" do |vb|
-      vb.name = "APPDB1"
+      vb.name = "CMS-LIVE-APPDB1"
       vb.memory = 4096
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/Plone"
+                    "--groups", "/Vagrant/LMU-IuK/Plone"
                    ]
     end
     appdb1.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".210"
@@ -41,14 +41,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "appdb2.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |appdb2|
+  config.vm.define "cms-live-appdb2.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |appdb2|
     appdb2.vm.provider "virtualbox" do |vb|
       vb.name = "APPDB2"
       vb.memory = 4096
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/Plone"
+                    "--groups", "/Vagrant/LMU-IuK/Plone"
                    ]
     end
     appdb2.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".211"
@@ -57,14 +57,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "app3.verwaltung.uni-muenchen.de" do |app3|
+  config.vm.define "cms-live-app3.verwaltung.uni-muenchen.de" do |app3|
     app3.vm.provider "virtualbox" do |vb|
       vb.name = "APP3"
       vb.memory = 4096
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/Plone"
+                    "--groups", "/Vagrant/LMU-IuK/Plone"
                    ]
     end
     app3.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".215"
@@ -73,14 +73,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "app4.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |app4|
+  config.vm.define "cms-live-app4.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |app4|
     app4.vm.provider "virtualbox" do |vb|
       vb.name = "APP4"
       vb.memory = 4096
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/Plone"
+                    "--groups", "/Vagrant/LMU-IuK/Plone"
                    ]
     end
     app4.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".216"
@@ -96,7 +96,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/Solr"
+                    "--groups", "/Vagrant/LMU-IuK/Solr"
                    ]
     end
     search3.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".208"
@@ -112,7 +112,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/Solr"
+                    "--groups", "/Vagrant/LMU-IuK/Solr"
                    ]
     end
     search4.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".209"
@@ -128,7 +128,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/WebProxies"
+                    "--groups", "/Vagrant/LMU-IuK/WebProxies"
                    ]
     end
     webproxy1.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".205"
@@ -144,7 +144,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/WebProxies"
+                    "--groups", "/Vagrant/LMU-IuK/WebProxies"
                    ]
     end
     webproxy2.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".206"
@@ -160,7 +160,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/Sentry"
+                    "--groups", "/Vagrant/LMU-IuK/Sentry"
                    ]
     end
     sentry.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".190"
@@ -176,7 +176,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU/Piwik"
+                    "--groups", "/Vagrant/LMU-IuK/Piwik"
                    ]
     end
     node.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".195"
@@ -192,41 +192,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU"
+                    "--groups", "/Vagrant/LMU-IuK"
                    ]
     end
     node.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".200"
     if USE_PUBLIC_NETWORK
       node.vm.network :public_network, ip: PUBLIC_NETWORK_BASE + ".200"
     end
+  end
 
-    if ENV['OS'] != "Windows_NT" # Windows don't support ansible, 
-      # Provisioning only on last maschine but for all:
-      config.vm.provision "ansible" do |ansible|
-        ansible.groups = {
-          "appdbs" => ["appdb1.verwaltung.uni-muenchen.de", "appdb2.verwaltung.uni-muenchen.de"],
-          "apps" => ["app3.verwaltung.uni-muenchen.de", "app4.verwaltung.uni-muenchen.de"],
-          "searchs" => ["search3.verwaltung.uni-muenchen.de", "search4.verwaltung.uni-muenchen.de"],
-          "webproxies" => ["webproxy1.verwaltung.uni-muenchen.de", "webproxy2.verwaltung.uni-muenchen.de"],
-          "sentrys" => ["sentry1.verwaltung.uni-muenchen.de"],
-          "piwik-dbs" => ["piwik1.verwaltung.uni-muenchen.de"],
-          "piwik-masters" => ["piwik1.verwaltung.uni-muenchen.de"],
-          "piwik-workers" => ["piwik1.verwaltung.uni-muenchen.de"],
-          "infrastruktur:children" => [],
-          "serverraum-ludwig27" => ["appdb1", "app3", "search3", "webproxy1", "special", "piwik"],
-          "serverraum-martius4" => ["appdb2", "app4", "search4", "webproxy2"],
-          "DMZ-CMS" => ["plone"],
-          "DMZ-Webproxies:children" => ["webproxies"],
-          "DMZ-Analytics" => ["piwik"],
-          "DMZ-Infrastruktur" => ["infrastruktur"],
-        }
-        #ansible.verbose = "vvvv"
-        ansible.verbose = ""
-        ansible.limit = "all"
-        #ansible.playbook = "lmu.ansible.playbooks/base-preseed.yml"
-        ansible.playbook = "lmu.ansible.playbooks/iuk_fullstack.yml"
-        #ansible.ask_vault_pass = true
-      end
+  if ENV['OS'] != "Windows_NT" # Windows don't support ansible, 
+    # Provisioning only on last maschine but for all:
+    config.vm.provision "ansible" do |ansible|
+      #ansible.verbose = "vvvv"
+      ansible.verbose = ""
+      #ansible.limit = "all"
+      ansible.playbook = "lmu.ansible.playbooks/base-preseed.yml"
+      #ansible.playbook = "lmu.ansible.playbooks/iuk_fullstack.yml"
+      #ansible.ask_vault_pass = true
     end
   end
 
