@@ -43,7 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "cms-live-appdb2.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |appdb2|
     appdb2.vm.provider "virtualbox" do |vb|
-      vb.name = "APPDB2"
+      vb.name = "CMS-LIVE-APPDB2"
       vb.memory = 4096
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
@@ -59,7 +59,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "cms-live-app3.verwaltung.uni-muenchen.de" do |app3|
     app3.vm.provider "virtualbox" do |vb|
-      vb.name = "APP3"
+      vb.name = "CMS-LIVE-APP3"
       vb.memory = 4096
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
@@ -75,7 +75,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "cms-live-app4.verwaltung.uni-muenchen.de", autostart: AUTOSTART_SECONDARY do |app4|
     app4.vm.provider "virtualbox" do |vb|
-      vb.name = "APP4"
+      vb.name = "CMS-LIVE-APP4"
       vb.memory = 4096
       vb.cpus = 4
       vb.customize ["modifyvm", :id,

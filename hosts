@@ -41,6 +41,6 @@
 10.153.101.235   cms-live-app4 cms-live-app4.verwaltung.uni-muenchen.de
 10.153.101.232   search3 search3.verwaltung.uni-muenchen.de
 10.153.101.233   search4 search4.verwaltung.uni-muenchen.de
-10.1110.33.1     webproxy1 webproxy1.verwaltung.uni-muenchen.de
-10.1110.33.2     webproxy2 webproxy2.verwaltung.uni-muenchen.de
+10.110.33.1      webproxy1 webproxy1.verwaltung.uni-muenchen.de
+10.110.33.2      webproxy2 webproxy2.verwaltung.uni-muenchen.de
 141.84.149.16    sentry sentry.verwaltung.uni-muenchen.de sentry1 sentry1.verwaltung.uni-muenchen.de
