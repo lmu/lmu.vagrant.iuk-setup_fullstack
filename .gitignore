@@ -18,6 +18,8 @@ lib/
 lib64/
 parts/
 sdist/
+log/
+logs/
 var/
 *.egg-info/
 .installed.cfg
