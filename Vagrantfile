@@ -23,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
   # Disbale default synced_folder as ther is no need for this.
-  config.vm.synced_folder ".", "/vagrant", disabled: true 
+  config.vm.synced_folder ".", "/vagrant", disabled: true
 
   config.vm.define "cms-live-appdb1.verwaltung.uni-muenchen.de" do |appdb1|
     appdb1.vm.provider "virtualbox" do |vb|
@@ -32,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/Plone"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/Plone"
                    ]
     end
     appdb1.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".210"
@@ -48,7 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/Plone"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/Plone"
                    ]
     end
     appdb2.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".211"
@@ -64,7 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/Plone"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/Plone"
                    ]
     end
     app3.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".215"
@@ -80,7 +80,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/Plone"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/Plone"
                    ]
     end
     app4.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".216"
@@ -96,7 +96,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/Solr"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/Solr"
                    ]
     end
     search3.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".208"
@@ -112,7 +112,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/Solr"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/Solr"
                    ]
     end
     search4.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".209"
@@ -128,7 +128,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/WebProxies"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/WebProxies"
                    ]
     end
     webproxy1.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".205"
@@ -144,7 +144,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/WebProxies"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/WebProxies"
                    ]
     end
     webproxy2.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".206"
@@ -160,7 +160,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/Sentry"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/Sentry"
                    ]
     end
     sentry.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".190"
@@ -176,7 +176,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.cpus = 4
       vb.customize ["modifyvm", :id,
                     "--cpuexecutioncap", "50",
-                    "--groups", "/Vagrant/LMU-IuK/Piwik"
+                    "--groups", "/Vagrant/LMU/LMU-IuK/Piwik"
                    ]
     end
     node.vm.network :private_network, ip: PRIVATE_NETWORK_BASE + ".195"
@@ -201,7 +201,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  if ENV['OS'] != "Windows_NT" # Windows don't support ansible, 
+  if ENV['OS'] != "Windows_NT" # Windows don't support ansible,
     # Provisioning only on last maschine but for all:
     config.vm.provision "ansible" do |ansible|
       #ansible.verbose = "vvvv"
